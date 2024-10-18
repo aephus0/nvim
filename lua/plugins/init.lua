@@ -1,10 +1,10 @@
 return {
-   {
+  {
     "rcarriga/nvim-dap-ui",
     event = "VeryLazy",
     dependencies = {
       "mfussenegger/nvim-dap",
-      "nvim-neotest/nvim-nio"
+      "nvim-neotest/nvim-nio",
     },
   },
   {
@@ -15,22 +15,22 @@ return {
       "mfussenegger/nvim-dap",
     },
     opts = {
-      handlers = {}
+      handlers = {},
     },
   },
   {
     "mfussenegger/nvim-dap",
     config = function()
-      require("configs.dap")
+      require "configs.dap"
     end,
   },
   {
-		"theHamsta/nvim-dap-virtual-text",
-		config = function()
-			require("nvim-dap-virtual-text").setup()
-		end,
-		requires = { "mfussenegger/nvim-dap" },
-	},
+    "theHamsta/nvim-dap-virtual-text",
+    config = function()
+      require("nvim-dap-virtual-text").setup()
+    end,
+    requires = { "mfussenegger/nvim-dap" },
+  },
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
@@ -48,38 +48,47 @@ return {
   },
 
   {
-  	"williamboman/mason.nvim",
-  	opts = {
-  		ensure_installed = {
-  			"lua-language-server", "stylua",
-  			"html-lsp", "css-lsp" , "prettier",
-        "clangd", "clang-format"
-  		},
-  	},
+    "williamboman/mason.nvim",
+    opts = {},
   },
 
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
-  			"vim", "lua", "vimdoc",
-       "html", "css"
-  		},
-  	},
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+      },
+    },
   },
   {
     "telescope.nvim",
     dependencies = {
       "nvim-telescope/telescope-fzf-native.nvim",
-			build = "make",
-			lazy = false,
-			config = function()
-				require("telescope").load_extension("fzf")
-			end,
+      build = "make",
+      lazy = false,
+      config = function()
+        require("telescope").load_extension "fzf"
+      end,
     },
   },
   {
-		"ojroques/nvim-bufdel",
-		lazy = false,
-	},
+    "ojroques/nvim-bufdel",
+    lazy = false,
+  },
+  {
+    "ThePrimeagen/vim-be-good",
+    lazy = false,
+  },
+  {
+    "codota/tabnine-nvim",
+    lazy = false,
+    build = "./dl_binaries.sh",
+    config = function()
+      require "configs.tabnine"
+    end,
+  },
 }
