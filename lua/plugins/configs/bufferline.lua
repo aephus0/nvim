@@ -1,0 +1,5 @@
+return {
+  options = {
+    themable = true,
+  },
+}
