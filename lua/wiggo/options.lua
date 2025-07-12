@@ -1,50 +1,47 @@
-local o = vim.o
+vim.opt.guicursor = ""
 
--- Set the leader key
-vim.g.mapleader = " "
+vim.opt.nu = true
+vim.opt.relativenumber = true
 
--- Set the cursor to fat
-o.guicursor = ""
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
--- Show number and relativenumber
-o.nu = true
-o.relativenumber = true
+vim.opt.smartindent = true
 
-o.laststatus = 3 -- global statusline
-o.showmode = false
+vim.opt.wrap = false
 
--- Indenting
-o.shiftwidth = 4
-o.tabstop = 4
-o.softtabstop = 4
-o.expandtab = true
-o.smartindent = true
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
 
--- No line wraps
-o.wrap = false
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
 
--- Disable swapfile and use undofile for undotree
-o.swapfile = false
-o.backup = false
-o.undodir = os.getenv("HOME") .. "/.vim/undodir"
-o.undofile = true
+vim.opt.termguicolors = true
 
--- No hightlight search but show as you search
-o.hlsearch = false
-o.incsearch = true
-
-o.termguicolors = true
-
-o.scrolloff = 8
-o.signcolumn = "yes"
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-o.updatetime = 50
+vim.opt.updatetime = 50
 
-o.colorcolumn = "80"
+vim.opt.colorcolumn = "80"
 
 -- add binaries installed by mason.nvim to path
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
 vim.env.PATH = vim.env.PATH .. (is_windows and ";" or ":") .. vim.fn.stdpath "data" .. "/mason/bin"
 
-vim.api.nvim_set_hl(0, "IndentLine", { link = "Comment" })
+
+
+
+
+
+
+
+
+
+
+

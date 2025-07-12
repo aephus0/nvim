@@ -38,12 +38,8 @@ autocmd({"BufWritePre"}, {
 autocmd('BufEnter', {
     group = WiggoGroup,
     callback = function()
-        if vim.bo.filetype == "zig" then
-            vim.cmd.colorscheme("tokyonight-night")
-        else
-            vim.cmd.colorscheme("rose-pine-moon")
+            vim.cmd.colorscheme("rose-pine")
         end
-    end
 })
 
 
