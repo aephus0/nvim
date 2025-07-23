@@ -42,7 +42,6 @@ autocmd('BufEnter', {
         end
 })
 
-
 autocmd('LspAttach', {
     group = WiggoGroup,
     callback = function(e)
@@ -57,6 +56,24 @@ autocmd('LspAttach', {
         vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
         vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+        vim.keymap.set("n", "<leader>vo", function()
+            vim.lsp.buf.code_action({
+                context = { only = {"source.organizeImports"} }
+            })
+        end, opts)
+        vim.keymap.set("n", "<leader>vf", function()
+            vim.lsp.buf.code_action({
+                range = {
+                    start = {vim.fn.line("."), 0},
+                    ["end"] = {vim.fn.line("."), 0}
+                }
+            })
+        end, opts)
+        vim.keymap.set("n", "<leader>vF", function()
+            vim.lsp.buf.code_action({
+                context = { only = {"source.fixAll"} }
+            })
+        end, opts)
     end
 })
 

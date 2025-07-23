@@ -47,7 +47,8 @@ return {
                 "gopls",
                 "clangd",
                 "ts_ls",
-                "jdtls"
+                "jdtls",
+                "sqlls"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -71,6 +72,47 @@ return {
                                     }
                                 },
                             }
+                        }
+                    }
+                end,
+                ["ts_ls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.ts_ls.setup {
+                        capabilities = capabilities,
+                        settings = {
+                            typescript = {
+                                preferences = {
+                                    importModuleSpecifier = "relative",
+                                    includeCompletionsForModuleExports = true,
+                                    includeCompletionsForImportStatements = true,
+                                    includeCompletionsWithSnippetText = true,
+                                    includeAutomaticOptionalChainCompletions = true,
+                                    allowIncompleteCompletions = true,
+                                    allowRenameOfImportPath = true,
+                                    providePrefixAndSuffixTextForRename = true,
+                                    quotePreference = "single",
+                                    includePackageJsonAutoImports = "auto"
+                                },
+                                suggest = {
+                                    autoImports = true,
+                                    completeFunctionCalls = true,
+                                    includeCompletionsForModuleExports = true,
+                                    includeCompletionsWithInsertText = true
+                                },
+                                validate = {
+                                    enable = true
+                                },
+                                workspaceSymbols = {
+                                    scope = "allOpenProjects"
+                                },
+                                codeActions = {
+                                    disabledCodeActions = {},
+                                    includeCompletionsWithInsertText = true
+                                },
+                                organizeImports = {
+                                    enable = true
+                                }
+                            },
                         }
                     }
                 end,
