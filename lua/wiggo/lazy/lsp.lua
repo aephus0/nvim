@@ -43,6 +43,7 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
+                "pyright",
                 "rust_analyzer",
                 "gopls",
                 "clangd",
@@ -73,6 +74,12 @@ return {
                                 },
                             }
                         }
+                    }
+                end,
+                ["angular_ls"] = function ()
+                   local lspconfig = require("lspconfig")
+                    lspconfig.angular_ls.setup {
+                        capabilities = capabilities
                     }
                 end,
                 ["ts_ls"] = function()
