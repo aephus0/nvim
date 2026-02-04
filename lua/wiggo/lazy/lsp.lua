@@ -49,7 +49,7 @@ return {
 				"clangd",
 				"ts_ls",
 				"jdtls",
-				"sqlls",
+				"sqlls"
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -150,6 +150,7 @@ return {
 		})
 
 		vim.diagnostic.config({
+            virtual_text = true,
 			-- update_in_insert = true,
 			float = {
 				focusable = false,
